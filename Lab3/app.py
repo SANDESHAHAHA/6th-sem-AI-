@@ -2,8 +2,11 @@ import streamlit as st
 import joblib 
 
 
-model = joblib.load("news_model.joblib")
+# model = joblib.load("news_model.joblib")
+from pathlib import Path
 
+MODEL_PATH = Path(__file__).parent / "news_model.joblib"
+model = joblib.load(MODEL_PATH)
 
 st.title("News categorization and Recommendation system")
 st.markdown("---")
