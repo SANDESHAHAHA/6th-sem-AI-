@@ -1,5 +1,4 @@
 import streamlit as st 
-from sklearn.feature_extraction.text import TfidfVectorizer
 import joblib 
 
 
@@ -32,5 +31,7 @@ if btn:
     if article.strip() == "":
         st.warning("Please enter a news article before predicting !")
     else:
-       prediction = model.predict([article])
-       st.write(prediction)
+        with st.spinner("Classifying article..."):
+            prediction = model.predict([article])
+       
+        st.success(f"Prediction:{prediction[0]}")
